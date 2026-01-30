@@ -5,10 +5,6 @@ export default function Input({
   value = 0,
   onValueChange,
 }) {
-  function handleChange(inputName, newValue) {
-    onValueChange(inputName, Number(newValue));
-  }
-
   return (
     <div>
       <label htmlFor={name}>{label}</label>
@@ -20,7 +16,7 @@ export default function Input({
         max="100000"
         step={step}
         value={value}
-        onChange={(event) => handleChange(name, event.target.value)}
+        onChange={(event) => onValueChange(name, event.target.value)}
         required
       />
     </div>
