@@ -8,13 +8,13 @@ export default function Result({ results }) {
         <thead>
           <tr>
             {resultHeaders.map((header) => (
-              <th>{header}</th>
+              <th key={`${header}`}>{header}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {results.map((row) => (
-            <tr>
+            <tr key={`${row.year}`}>
               <td>{row.year}</td>
               <td>{formatter.format()}</td>
               <td>{formatter.format()}</td>
