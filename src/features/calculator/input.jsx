@@ -1,9 +1,12 @@
-export default function Input({ label, name, step, value, onValueChange }) {
-  function handleChange(inputName, event) {
-    const newValue = event.target.value;
-    const newInvestment = { [inputName]: newValue };
-
-    onValueChange(newInvestment);
+export default function Input({
+  label,
+  name,
+  step = 1,
+  value = 0,
+  onValueChange,
+}) {
+  function handleChange(inputName, newValue) {
+    onValueChange(inputName, Number(newValue));
   }
 
   return (
@@ -17,7 +20,7 @@ export default function Input({ label, name, step, value, onValueChange }) {
         max="100000"
         step={step}
         value={value}
-        onChange={handleChange}
+        onChange={(event) => handleChange(name, event.target.value)}
         required
       />
     </div>
