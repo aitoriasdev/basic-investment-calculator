@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ErrorBoundary from "./util/ErrorBoundary";
 import Calculator from "./features/calculator/calculator";
 import Header from "./features/header/header";
 import Results from "./features/results/results";
