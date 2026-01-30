@@ -16,11 +16,25 @@ function App() {
 
   const data = calculateInvestmentResults(userInvestments);
 
+  function handleCalculatorChange(inputName, newInputValue) {
+    setUserInvestments((prevValues) => {
+      const newInvestmentValues = {
+        ...prevValues,
+        [inputName]: newInputValue,
+      };
+
+      return newInvestmentValues;
+    });
+  }
+
   return (
     <>
       <Header />
       <main>
-        <Calculator inputInvestments={userInvestments} />
+        <Calculator
+          inputInvestments={userInvestments}
+          onInputChange={handleCalculatorChange}
+        />
         <Result results={data} />
       </main>
     </>
