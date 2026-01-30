@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Calculator from "./features/calculator/calculator";
 import Header from "./features/header/header";
-import Result from "./features/result/result";
-import { calculateInvestmentResults } from "./util/investment.js";
+import Results from "./features/results/results";
 
 const INITIAL_INVESTMENTS = {
   initialInvestment: 10000,
@@ -14,13 +13,11 @@ const INITIAL_INVESTMENTS = {
 function App() {
   const [userInvestments, setUserInvestments] = useState(INITIAL_INVESTMENTS);
 
-  const data = calculateInvestmentResults(userInvestments);
-
   function handleCalculatorChange(inputName, newInputValue) {
     setUserInvestments((prevValues) => {
       const newInvestmentValues = {
         ...prevValues,
-        [inputName]: newInputValue,
+        [inputName]: +newInputValue,
       };
 
       return newInvestmentValues;
@@ -35,7 +32,7 @@ function App() {
           inputInvestments={userInvestments}
           onInputChange={handleCalculatorChange}
         />
-        <Result results={data} />
+        <Results results={userInvestments} />
       </main>
     </>
   );
